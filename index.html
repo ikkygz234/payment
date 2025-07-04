@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran via DANA</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+        }
+        .payment-container {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .dana-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .dana-logo {
+            width: 80px;
+            margin-right: 15px;
+        }
+        h1 {
+            color: #00B0FF;
+            margin: 0;
+        }
+        .payment-info {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .nomor-dana {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #00796B;
+            margin: 10px 0;
+        }
+        .steps {
+            margin: 25px 0;
+        }
+        .step {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        .step-number {
+            background-color: #00B0FF;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .note {
+            font-style: italic;
+            color: #666;
+            margin-top: 20px;
+            padding: 10px;
+            border-left: 3px solid #00B0FF;
+            background-color: #f9f9f9;
+        }
+        .btn-copy {
+            background-color: #00B0FF;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s;
+        }
+        .btn-copy:hover {
+            background-color: #0088CC;
+        }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <div class="dana-header">
+            <img src="https://dana.id/assets/images/logo.svg" alt="DANA Logo" class="dana-logo">
+            <h1>Pembayaran via DANA</h1>
+        </div>
+        
+        <p>Silakan lakukan pembayaran melalui aplikasi DANA ke nomor berikut:</p>
+        
+        <div class="payment-info">
+            <p>6283852509024</p>
+            <div style="display: flex; align-items: center;">
+                <span class="nomor-dana" id="danaNumber">6283852509024</span>
+                <button class="btn-copy" onclick="copyToClipboard()">Salin</button>
+            </div>
+        </div>
+        
+        <div class="steps">
+            <h3>Cara Pembayaran:</h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Buka aplikasi DANA di smartphone Anda</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Pilih menu "Kirim" atau "Transfer"</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Masukkan nomor DANA <strong>6283852509024</strong></div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>Masukkan jumlah pembayaran sesuai pesanan</div>
+            </div>
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>Ikuti instruksi selanjutnya untuk menyelesaikan pembayaran</div>
+            </div>
+        </div>
+        
+        <div class="note">
+            <p>Setelah melakukan pembayaran, harap simpan bukti transfer dan lakukan konfirmasi pembayaran melalui WhatsApp atau email kami.</p>
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const danaNumber = document.getElementById('danaNumber');
+            const textArea = document.createElement('textarea');
+            textArea.value = danaNumber.textContent;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            const button = document.querySelector('.btn-copy');
+            button.textContent = 'Tersalin!';
+            setTimeout(() => {
+                button.textContent = 'Salin';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
